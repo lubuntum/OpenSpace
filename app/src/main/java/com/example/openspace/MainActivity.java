@@ -21,7 +21,11 @@ public class MainActivity extends AppCompatActivity {
     }
     @SuppressLint("ClickableViewAccessibility")
     public void init(){
-        LinearLayout linearLayout = findViewById(R.id.gamePanel);
+        GameView gameView = new GameView(this);
+
+        LinearLayout gameLayout = findViewById(R.id.gameLayout);
+        gameLayout.addView(gameView);
+
         GamePanelListener gamePanelListener = new GamePanelListener();
 
         Button leftBtn = findViewById(R.id.leftBtn);

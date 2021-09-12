@@ -22,7 +22,7 @@ public class GamePanelListener implements View.OnTouchListener {
                         Log.d("Click","left");
                         break;
                     case MotionEvent.ACTION_UP:
-                        isRightPressed = true;
+                        isLeftPressed = false;
                         break;
                 }
                 break;
@@ -33,7 +33,7 @@ public class GamePanelListener implements View.OnTouchListener {
                         Log.d("Click","right");
                         break;
                     case MotionEvent.ACTION_UP:
-                        isLeftPressed = true;
+                        isRightPressed = false;
                         break;
                 }
                 break;

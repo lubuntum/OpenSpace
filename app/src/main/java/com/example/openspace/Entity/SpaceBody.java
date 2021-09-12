@@ -19,8 +19,8 @@ public class SpaceBody {
 
     public void init(Context context){
         Bitmap cBitmap = BitmapFactory.decodeResource(context.getResources(),bitMapId);
-        float testW = GameView.unitW;
-        float testH = GameView.unitH;
+        int testW = (int)(size* GameView.unitW);
+        int testH = (int)(size* GameView.unitH);
         bitmap = Bitmap.createScaledBitmap(cBitmap,
                 (int)(size* GameView.unitW),(int)(size*GameView.unitH),false);
         cBitmap.recycle();
@@ -28,5 +28,15 @@ public class SpaceBody {
     public void update(){}
     public void drow(Paint paint, Canvas canvas){
         canvas.drawBitmap(bitmap,x*GameView.unitW,y*GameView.unitH,paint);
+    }
+    public boolean isCollision(SpaceBody body){
+        if ((x > body.x && x < body.x + body.size) &&
+                (y > body.y && y < body.y + body.size)){
+            return true;
+        }
+        return false;
+    }
+    public boolean isOut(){
+        return y > GameView.maxY;
     }
 }

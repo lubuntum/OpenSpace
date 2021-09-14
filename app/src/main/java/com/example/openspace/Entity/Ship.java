@@ -27,4 +27,19 @@ public class Ship extends SpaceBody{
             x += speed;
         }
     }
+
+    @Override
+    public boolean isCollision(SpaceBody body) {
+        return  false;
+    }
+
+    public float getX() {
+        return x;
+    }
+    public float getY(){
+        return y;
+    }
+    public float getSize(){
+        return size;
+    }
 }

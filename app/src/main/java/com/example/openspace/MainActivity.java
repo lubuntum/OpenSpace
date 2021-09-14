@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.openspace.listeners.GamePanelListener;
+import com.example.openspace.listeners.GameViewListener;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         gameLayout.addView(gameView);
 
         GamePanelListener gamePanelListener = new GamePanelListener();
+        GameViewListener gameViewListener = new GameViewListener();
+
+        gameLayout.setOnTouchListener(gameViewListener);
 
         Button leftBtn = findViewById(R.id.leftBtn);
         Button rightBtn = findViewById(R.id.rightBtn);

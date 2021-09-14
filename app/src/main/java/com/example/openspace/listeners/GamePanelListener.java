@@ -19,7 +19,7 @@ public class GamePanelListener implements View.OnTouchListener {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
                         isLeftPressed = true;
-                        Log.d("Click","left");
+                        //Log.d("Click","left");
                         break;
                     case MotionEvent.ACTION_UP:
                         isLeftPressed = false;
@@ -30,7 +30,7 @@ public class GamePanelListener implements View.OnTouchListener {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
                         isRightPressed = true;
-                        Log.d("Click","right");
+                        //Log.d("Click","right");
                         break;
                     case MotionEvent.ACTION_UP:
                         isRightPressed = false;

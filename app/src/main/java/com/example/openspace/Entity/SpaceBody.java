@@ -4,13 +4,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 import com.example.openspace.GameView;
 
 import org.jetbrains.annotations.NotNull;
 
-public class SpaceBody {
+public abstract class SpaceBody {
     protected float x,y;
     protected float size;
     protected float speed;
@@ -24,19 +25,25 @@ public class SpaceBody {
         bitmap = Bitmap.createScaledBitmap(cBitmap,
                 (int)(size* GameView.unitW),(int)(size*GameView.unitH),false);
         cBitmap.recycle();
+
     }
     public void update(){}
     public void drow(Paint paint, Canvas canvas){
         canvas.drawBitmap(bitmap,x*GameView.unitW,y*GameView.unitH,paint);
+        /**
+        paint.setColor(Color.RED);
+        canvas.drawLine(x*GameView.unitW,y*GameView.unitH,(x+size)*GameView.unitW,
+                (y+size)*GameView.unitH,paint);
+        paint.setColor(Color.GREEN);
+        paint.setStrokeWidth(5);
+        canvas.drawPoint(x*GameView.unitW,y*GameView.unitH,paint);
+        canvas.drawPoint((x+size/2)*GameView.unitW,(y+size/2)*GameView.unitH,paint);
+        canvas.drawPoint((x+size)*GameView.unitW,(y+size)*GameView.unitH,paint);
+        canvas.drawPoint((x+size*3/4)*GameView.unitW,(y+size*3/4)*GameView.unitH,paint);
+         */
     }
-    public boolean isCollision(SpaceBody body){
-        if ((x > body.x && x < body.x + body.size) &&
-                (y > body.y && y < body.y + body.size)){
-            return true;
-        }
-        return false;
-    }
+    public abstract boolean isCollision(SpaceBody body);
     public boolean isOut(){
-        return y > GameView.maxY;
+        return (y > GameView.maxY || y < 0);
     }
 }
